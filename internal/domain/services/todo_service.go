@@ -21,3 +21,11 @@ func (ts *TodoService) GetAllTodos() ([]models.Todo, error) {
 func (ts *TodoService) CreateTodo(input models.Todo) (models.Todo, error) {
 	return ts.Repo.CreateTodo(context.Background(), input)
 }
+
+func (ts *TodoService) UpdateTodoByID(id string, input models.Todo) (models.Todo, error) {
+	return ts.Repo.UpdateTodoByID(context.Background(), id, input)
+}
+
+func (ts *TodoService) DeleteTodoByID(id string) error {
+	return ts.Repo.DeleteTodoByID(context.Background(), id)
+}

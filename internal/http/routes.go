@@ -14,6 +14,9 @@ func RegisterRoutes(e *echo.Echo, db *pgxpool.Pool) {
 	todoService := services.NewTodoService(todoRepo)
 	todoController := controllers.NewTodoController(todoService)
 
+	e.GET("/", todoController.GetHello)
 	e.GET("/todos", todoController.GetTodos)
 	e.POST("/create-todo", todoController.CreateTodo)
+	e.DELETE("/todo/:id", todoController.DeleteTodoByID)
+	e.PATCH("/todo/:id", todoController.UpdateTodoByID)
 }
